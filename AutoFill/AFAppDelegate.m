@@ -14,11 +14,24 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+#pragma mark - getter Methods
+
+- (AFViewController *)viewController{
+    if (_viewController == nil) {
+        _viewController = [[AFViewController alloc] init];
+        _viewController.view.backgroundColor = [UIColor lightGrayColor];
+    }
+    return _viewController;
+}
+
+#pragma mark - application functions
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -50,6 +63,8 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+#pragma mark - CoreData functions
 
 - (void)saveContext
 {

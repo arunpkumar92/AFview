@@ -22,6 +22,11 @@
 		521AFE0318D6D20600FBC306 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521AFDE718D6D20500FBC306 /* CoreData.framework */; };
 		521AFE0B18D6D20600FBC306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521AFE0918D6D20600FBC306 /* InfoPlist.strings */; };
 		521AFE0D18D6D20600FBC306 /* AutoFillTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 521AFE0C18D6D20600FBC306 /* AutoFillTests.m */; };
+		521AFE1818D6D22D00FBC306 /* AFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521AFE1718D6D22D00FBC306 /* AFViewController.m */; };
+		521AFE1C18D6D2DF00FBC306 /* AFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 521AFE1B18D6D2DF00FBC306 /* AFView.m */; };
+		521AFE1F18D6DCC800FBC306 /* Ex_Text_Field_Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 521AFE1D18D6DCC800FBC306 /* Ex_Text_Field_Bg.png */; };
+		521AFE2018D6DCC800FBC306 /* Ex_Text_Field_Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521AFE1E18D6DCC800FBC306 /* Ex_Text_Field_Bg@2x.png */; };
+		521AFE2318D6F04100FBC306 /* AFDropDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 521AFE2218D6F04100FBC306 /* AFDropDownCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,14 @@
 		521AFE0818D6D20600FBC306 /* AutoFillTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoFillTests-Info.plist"; sourceTree = "<group>"; };
 		521AFE0A18D6D20600FBC306 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		521AFE0C18D6D20600FBC306 /* AutoFillTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoFillTests.m; sourceTree = "<group>"; };
+		521AFE1618D6D22D00FBC306 /* AFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFViewController.h; sourceTree = "<group>"; };
+		521AFE1718D6D22D00FBC306 /* AFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFViewController.m; sourceTree = "<group>"; };
+		521AFE1A18D6D2DF00FBC306 /* AFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFView.h; sourceTree = "<group>"; };
+		521AFE1B18D6D2DF00FBC306 /* AFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFView.m; sourceTree = "<group>"; };
+		521AFE1D18D6DCC800FBC306 /* Ex_Text_Field_Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ex_Text_Field_Bg.png; sourceTree = "<group>"; };
+		521AFE1E18D6DCC800FBC306 /* Ex_Text_Field_Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ex_Text_Field_Bg@2x.png"; sourceTree = "<group>"; };
+		521AFE2118D6F04000FBC306 /* AFDropDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDropDownCell.h; sourceTree = "<group>"; };
+		521AFE2218D6F04100FBC306 /* AFDropDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDropDownCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +128,11 @@
 		521AFDE918D6D20500FBC306 /* AutoFill */ = {
 			isa = PBXGroup;
 			children = (
+				521AFE1918D6D24300FBC306 /* Auto Fill */,
+				521AFE2118D6F04000FBC306 /* AFDropDownCell.h */,
+				521AFE2218D6F04100FBC306 /* AFDropDownCell.m */,
+				521AFE1618D6D22D00FBC306 /* AFViewController.h */,
+				521AFE1718D6D22D00FBC306 /* AFViewController.m */,
 				521AFDF218D6D20500FBC306 /* AFAppDelegate.h */,
 				521AFDF318D6D20500FBC306 /* AFAppDelegate.m */,
 				521AFDF818D6D20600FBC306 /* Images.xcassets */,
@@ -151,6 +169,17 @@
 				521AFE0918D6D20600FBC306 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		521AFE1918D6D24300FBC306 /* Auto Fill */ = {
+			isa = PBXGroup;
+			children = (
+				521AFE1A18D6D2DF00FBC306 /* AFView.h */,
+				521AFE1B18D6D2DF00FBC306 /* AFView.m */,
+				521AFE1D18D6DCC800FBC306 /* Ex_Text_Field_Bg.png */,
+				521AFE1E18D6DCC800FBC306 /* Ex_Text_Field_Bg@2x.png */,
+			);
+			name = "Auto Fill";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +258,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521AFE2018D6DCC800FBC306 /* Ex_Text_Field_Bg@2x.png in Resources */,
 				521AFDEE18D6D20500FBC306 /* InfoPlist.strings in Resources */,
+				521AFE1F18D6DCC800FBC306 /* Ex_Text_Field_Bg.png in Resources */,
 				521AFDF918D6D20600FBC306 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,8 +281,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				521AFDF718D6D20600FBC306 /* AutoFill.xcdatamodeld in Sources */,
+				521AFE2318D6F04100FBC306 /* AFDropDownCell.m in Sources */,
 				521AFDF018D6D20500FBC306 /* main.m in Sources */,
 				521AFDF418D6D20500FBC306 /* AFAppDelegate.m in Sources */,
+				521AFE1818D6D22D00FBC306 /* AFViewController.m in Sources */,
+				521AFE1C18D6D2DF00FBC306 /* AFView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +484,7 @@
 				521AFE1218D6D20600FBC306 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521AFE1318D6D20600FBC306 /* Build configuration list for PBXNativeTarget "AutoFillTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +493,7 @@
 				521AFE1518D6D20600FBC306 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

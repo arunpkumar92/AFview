@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFViewController.h"
 
 @interface AFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) AFViewController *viewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
