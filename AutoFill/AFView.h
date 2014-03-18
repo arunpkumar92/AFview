@@ -23,8 +23,6 @@
 
 @optional
 
-- (NSString *)bgImageName;
-- (NSString *)emptyMessage;
 
 @required
 - (NSArray *)dataSourceArray;
@@ -37,5 +35,9 @@
 
 @property (nonatomic, assign) id<AFViewDelegate> delegate;
 @property (nonatomic, assign) id <AFViewDataSource> dataSource;
+@property (nonatomic, strong) UITextField *searchTextField;
+
+- (void)setBackGroundImage:(UIImage *) image;
+- (void)setEmptyMessage:(NSString *) message;
 
 @end

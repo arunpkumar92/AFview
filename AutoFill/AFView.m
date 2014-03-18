@@ -10,12 +10,10 @@
 
 @interface AFView()
 
-@property (nonatomic, strong) UITextField *searchTextField;
 @property (nonatomic, strong) NSArray *dataSourceArray;
 @property (nonatomic, strong) NSArray *currentDataSource;
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSString *textFieldBgName;
 @property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) UILabel *notFoundLabel;
 @property (nonatomic, strong) UIControl *fullScreenControl;
@@ -32,7 +30,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.textFieldBgName = @"Ex_Text_Field_Bg";
         self.dataSourceArray = [NSArray array];
         self.currentDataSource = [self.dataSourceArray copy];
         self.backgroundColor = [UIColor clearColor];
@@ -50,26 +47,6 @@
     if (_searchTextField == nil) {
         _searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _searchTextField.backgroundColor = [UIColor clearColor];
-        if ([self.dataSource respondsToSelector:@selector(bgImageName)]) {
-            self.textFieldBgName = [self.dataSource bgImageName];
-        }
-        [_searchTextField setBackground:[UIImage imageNamed:self.textFieldBgName]];
-        //[_searchTextField setDelegate:self];
-        _searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-        [_searchTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-        CGRect paddingLeftRect = CGRectMake(0, 0, 10, 42);
-        CGRect paddingRightRect = CGRectMake(0, 0, 30, 42);
-        _searchTextField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        UIView *paddingLeftView = [[UIView alloc] initWithFrame:paddingLeftRect];
-        paddingLeftView.userInteractionEnabled = false;
-        paddingLeftView.backgroundColor = [UIColor clearColor];
-        _searchTextField.leftView = paddingLeftView;
-        _searchTextField.leftViewMode = UITextFieldViewModeAlways;
-        UIView *paddingRightView = [[UIView alloc] initWithFrame:paddingRightRect];
-        paddingRightView.userInteractionEnabled = false;
-        paddingRightView.backgroundColor = [UIColor clearColor];
-        _searchTextField.rightView = paddingRightView;
-        _searchTextField.rightViewMode = UITextFieldViewModeAlways;
         _searchTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
         _searchTextField.delegate = self;
     }
@@ -95,15 +72,12 @@
         _notFoundLabel.backgroundColor = [UIColor clearColor];
         _notFoundLabel.textColor = [UIColor grayColor];
     }
-    if ([self.dataSource respondsToSelector:@selector(emptyMessage)]) {
-        _notFoundLabel.text = [self.dataSource emptyMessage];
-    }
     return _notFoundLabel;
 }
 
 - (UIControl *)fullScreenControl{
     if (_fullScreenControl == nil) {
-        _fullScreenControl = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)];
+        _fullScreenControl = [[UIControl alloc] initWithFrame:CGRectZero];
         _fullScreenControl.backgroundColor = [UIColor clearColor];
         _fullScreenControl.hidden = false;
         [_fullScreenControl addTarget:self action:@selector(outsideClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -128,6 +102,14 @@
 
 #pragma mark - custom Methods
 
+- (void)setBackGroundImage:(UIImage *) image{
+    [self.searchTextField setBackground:image];
+}
+
+- (void)setEmptyMessage:(NSString *) message{
+    self.notFoundLabel.text = message;
+}
+
 - (void)close:(id)item{
     
     if ([self.delegate respondsToSelector:@selector(endWithSelectedItem:)]){
@@ -149,7 +131,8 @@
     currentViewController.view.backgroundColor = [UIColor blueColor];
     // Add the subview to the main window
     [currentViewController.view addSubview:self.fullScreenControl];
-    
+    self.fullScreenControl.frame = currentViewController.view.bounds;
+    self.transperantBg.frame = currentViewController.view.bounds;
     [self.searchTextField removeFromSuperview];
     CGPoint point = [self convertPoint:self.searchTextField.frame.origin toView:self.fullScreenControl];
     [self.fullScreenControl addSubview:self.searchTextField];
@@ -168,7 +151,7 @@
     }else{
         self.currentDataSource = self.dataSourceArray;
     }
-
+    
     [self.tableView reloadData];
 }
 
@@ -199,7 +182,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-     return [self.dataSource afView:self cellForRowOfItem:[self.currentDataSource objectAtIndex:indexPath.row]];
+    return [self.dataSource afView:self cellForRowOfItem:[self.currentDataSource objectAtIndex:indexPath.row]];
 }
 
 #pragma mark - UITableViewDelegate

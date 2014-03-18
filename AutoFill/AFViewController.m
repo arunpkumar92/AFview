@@ -33,6 +33,23 @@
         _afView = [[AFView alloc] initWithFrame:CGRectMake(45, 45, 231, 42)];
         _afView.delegate = self;
         _afView.dataSource = self;
+        [_afView setBackGroundImage:[UIImage imageNamed:@"Ex_Text_Field_Bg"]];
+        //[_searchTextField setDelegate:self];
+        _afView.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+        [_afView.searchTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+        CGRect paddingLeftRect = CGRectMake(0, 0, 10, 42);
+        CGRect paddingRightRect = CGRectMake(0, 0, 30, 42);
+        _afView.searchTextField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        UIView *paddingLeftView = [[UIView alloc] initWithFrame:paddingLeftRect];
+        paddingLeftView.userInteractionEnabled = false;
+        paddingLeftView.backgroundColor = [UIColor clearColor];
+        _afView.searchTextField.leftView = paddingLeftView;
+        _afView.searchTextField.leftViewMode = UITextFieldViewModeAlways;
+        UIView *paddingRightView = [[UIView alloc] initWithFrame:paddingRightRect];
+        paddingRightView.userInteractionEnabled = false;
+        paddingRightView.backgroundColor = [UIColor clearColor];
+        _afView.searchTextField.rightView = paddingRightView;
+        _afView.searchTextField.rightViewMode = UITextFieldViewModeAlways;
     }
     return _afView;
 }
@@ -61,10 +78,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -  AFViewDelegate 
+#pragma mark -  AFViewDelegate
 
 - (void)start{
-
+    
 }
 
 - (void)endWithSelectedItem:(id)item{
@@ -76,19 +93,19 @@
 
 - (NSArray *)dataSourceArray{
     return [NSArray arrayWithObjects:@"Hafees",
-                            @"Arun",
-                            @"Suneeth",
-                            @"siju",
-                            @"sebi",
-                            @"tom",
-                            @"Parveen",
-                            @"kiran",
-                            @"shihab",
-                            @"sreehari",
-                            @"sunil",
-                            @"arun K R",
-                            @"saif",
-                            @"pra", nil];
+            @"Arun",
+            @"Suneeth",
+            @"siju",
+            @"sebi",
+            @"tom",
+            @"Parveen",
+            @"kiran",
+            @"shihab",
+            @"sreehari",
+            @"sunil",
+            @"arun K R",
+            @"saif",
+            @"pra", nil];
 }
 
 - (UITableViewCell *)afView:(AFView *)afView cellForRowOfItem:(id)item{
@@ -114,23 +131,15 @@
     return heightForCell;
 }
 
-- (NSString *)bgImageName{
-    return @"Ex_Text_Field_Bg";
-}
-
-- (NSString *)emptyMessage{
-    return @"coustom Not found";
-}
-
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
