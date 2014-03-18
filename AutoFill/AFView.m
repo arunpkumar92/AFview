@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) UILabel *notFoundLabel;
 @property (nonatomic, strong) UIControl *fullScreenControl;
-@property (nonatomic, strong) UIView *transperantBg;
+//@property (nonatomic, strong) UIView *transperantBg;
 
 @end
 
@@ -57,7 +57,15 @@
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(100, 100, self.frame.size.width, (5*self.frame.size.height))];
         _tableView.delegate = self;
+        if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            [_tableView setSeparatorInset:UIEdgeInsetsZero];
+        }
+        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+            _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        }
         _tableView.dataSource = self;
+        _tableView.layer.borderColor = [UIColor grayColor].CGColor;
+        _tableView.layer.borderWidth = 0.1f;
     }
     return _tableView;
 }
@@ -81,24 +89,24 @@
         _fullScreenControl.backgroundColor = [UIColor clearColor];
         _fullScreenControl.hidden = false;
         [_fullScreenControl addTarget:self action:@selector(outsideClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_fullScreenControl addSubview:self.transperantBg];
+        //[_fullScreenControl addSubview:self.transperantBg];
         _fullScreenControl.autoresizesSubviews = YES;
     }
     return _fullScreenControl;
 }
 
-- (UIView *)transperantBg{
-    if (_transperantBg == nil) {
-        _transperantBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)];
-        _transperantBg.backgroundColor = [UIColor clearColor];
-        [_transperantBg setBackgroundColor:[UIColor yellowColor]];
-        _transperantBg.alpha = 0.7;
-        _transperantBg.userInteractionEnabled = false;
-        _transperantBg.autoresizesSubviews = YES;
-    }
-    return _transperantBg;
-    
-}
+//- (UIView *)transperantBg{
+//    if (_transperantBg == nil) {
+//        _transperantBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)];
+//        _transperantBg.backgroundColor = [UIColor clearColor];
+//        [_transperantBg setBackgroundColor:[UIColor yellowColor]];
+//        _transperantBg.alpha = 0.7;
+//        _transperantBg.userInteractionEnabled = false;
+//        _transperantBg.autoresizesSubviews = YES;
+//    }
+//    return _transperantBg;
+//    
+//}
 
 #pragma mark - custom Methods
 
@@ -128,11 +136,11 @@
     }
     
     UIViewController *currentViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    currentViewController.view.backgroundColor = [UIColor blueColor];
+    //currentViewController.view.backgroundColor = [UIColor blueColor];
     // Add the subview to the main window
     [currentViewController.view addSubview:self.fullScreenControl];
     self.fullScreenControl.frame = currentViewController.view.bounds;
-    self.transperantBg.frame = currentViewController.view.bounds;
+    //self.transperantBg.frame = currentViewController.view.bounds;
     [self.searchTextField removeFromSuperview];
     CGPoint point = [self convertPoint:self.searchTextField.frame.origin toView:self.fullScreenControl];
     [self.fullScreenControl addSubview:self.searchTextField];
