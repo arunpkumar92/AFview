@@ -1,7 +1,7 @@
 Version 1.0
 
-  Created by Saiday on 01/14/2013.
-  Copyright 2013 Saiday
+  Created by Arun Kumar on 19/03/2014.
+  Copyright 2013  Arun Kumar
 
  This code is distributed under the terms and conditions of the MIT license.
 
