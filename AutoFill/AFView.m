@@ -48,6 +48,7 @@
         _searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _searchTextField.backgroundColor = [UIColor clearColor];
         _searchTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+        _searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         _searchTextField.delegate = self;
     }
     return _searchTextField;
